@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Equipo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            width: 420px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            color: #dc3545;
+            margin-bottom: 10px;
+        }
+
+        .info {
+            margin: 15px 0;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #a71d2a;
+        }
+
+        .btn-cancel {
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-left: 10px;
+            display: inline-block;
+        }
+
+        .btn-cancel:hover {
+            background: #495057;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>⚠️ Confirmar eliminación</h2>
+
+    <p>¿Seguro que deseas eliminar este equipo?</p>
+
+    <div class="info">
+        {{ object.marca }} - {{ object.serial }}
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <button type="submit" class="btn-delete">
+            Sí, eliminar
+        </button>
+
+        <a href="/equipos/" class="btn-cancel">
+            Cancelar
+        </a>
+    </form>
+
+</div>
+
+</body>
+</html>

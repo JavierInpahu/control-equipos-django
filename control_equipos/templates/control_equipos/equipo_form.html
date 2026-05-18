@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Equipo</title>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #eef2f7, #dfe9f3);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container{
+            width: 420px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        h2{
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label{
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        input, select{
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            outline: none;
+            transition: 0.2s;
+            background: #fafafa;
+        }
+
+        input:focus, select:focus{
+            border-color: #6a11cb;
+            box-shadow: 0 0 6px rgba(106,17,203,0.2);
+            background: white;
+        }
+
+        button{
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover{
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        .back{
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .back:hover{
+            color: #000;
+        }
+
+        /* Django form spacing */
+        form p{
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Formulario de Equipo</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Guardar</button>
+    </form>
+
+    <a class="back" href="/equipos/">⬅ Volver a la lista</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<h1>Sistema de Plantillas Django</h1>
+
+<hr>
+
+<h2>1. Variables</h2>
+
+<p>
+My first name is {{ first_name }}.
+My last name is {{ last_name }}.
+</p>
+
+<hr>
+
+<h2>2. Diccionario</h2>
+
+<p>{{ my_dict.key }}</p>
+
+<hr>
+
+<h2>3. Objeto</h2>
+
+<p>{{ my_object.nombre }}</p>
+
+<hr>
+
+<h2>4. Lista</h2>
+
+<p>{{ my_list.0 }}</p>
+<p>{{ my_list.1 }}</p>
+<p>{{ my_list.2 }}</p>
+
+<hr>
+
+<h2>5. Etiqueta IF</h2>
+
+{% if usuario_autenticado %}
+<p>Usuario autenticado</p>
+{% endif %}
+
+<hr>
+
+<h2>6. Etiqueta FOR</h2>
+
+{% for numero in numeros %}
+<p>{{ numero }}</p>
+{% endfor %}
+
+<hr>
+
+<h2>7. Etiqueta CSRF</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Enviar</button>
+</form>
+
+<hr>
+
+<h2>8. Etiqueta CYCLE</h2>
+
+{% for item in numeros %}
+    <p class="{% cycle 'rojo' 'azul' %}">
+        {{ item }}
+    </p>
+{% endfor %}
+
+<hr>
+
+<h2>9. Filtros</h2>
+
+<p>{{ django|title }}</p>
+
+<hr>
+
+<h2>10. Filtro DATE</h2>
+
+<p>{{ my_date|date:"Y-m-d" }}</p>
+
+<hr>
+
+<h2>11. Comentarios</h2>
+
+{# Este comentario no se mostrará #}
+
+<p>Comentario agregado correctamente.</p>
+
+<hr>
+
+<h2>12. Configuración TEMPLATES</h2>
+
+<pre>
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
+</pre>
+
+<p>
+BACKEND:
+motor de plantillas utilizado por Django.
+</p>
+
+<p>
+DIRS:
+lista de carpetas donde Django buscará plantillas.
+</p>
+
+<p>
+APP_DIRS:
+permite buscar plantillas dentro de cada aplicación.
+</p>
+
+<p>
+OPTIONS:
+configuraciones adicionales del motor de plantillas.
+</p>
+
+<hr>
+
+<h2>13. Componentes</h2>
+
+<h3>Motor</h3>
+<p>
+Administra el sistema de plantillas de Django.
+</p>
+
+<h3>Plantilla</h3>
+<p>
+Representa una plantilla compilada.
+</p>
+
+<h3>Contexto</h3>
+<p>
+Contiene los datos enviados a la plantilla.
+</p>
+
+<h3>Cargadoras</h3>
+<p>
+Buscan y cargan plantillas automáticamente.
+</p>
+
+<h3>Procesadores de contexto</h3>
+<p>
+Agregan datos comunes automáticamente a las plantillas.
+</p>
+
+<hr>
+
+<h2>14. Uso de get_template()</h2>
+
+<pre>
+from django.template.loader import get_template
+
+template = get_template("inicio.html")
+</pre>
+
+<p>
+Carga una plantilla específica.
+</p>
+
+<hr>
+
+<h2>15. Uso de render_to_string()</h2>
+
+<pre>
+from django.template.loader import render_to_string
+
+html = render_to_string(
+    "inicio.html",
+    {"nombre": "Oscar"}
+)
+</pre>
+
+<p>
+Renderiza una plantilla y devuelve un string HTML.
+</p>
+
+<hr>
+
+<h2>16. Uso de engines</h2>
+
+<pre>
+from django.template import engines
+
+django_engine = engines["django"]
+
+template = django_engine.from_string(
+    "Hola {{ nombre }}"
+)
+</pre>
+
+<p>
+Permite usar motores de plantillas directamente.
+</p>
+
+<hr>
+
+<h2>17. Jinja2</h2>
+
+<pre>
+pip install Jinja2
+</pre>
+
+<p>
+Jinja2 es un motor alternativo de plantillas compatible con Django.
+</p>
+
+<p>
+Soporta funciones, filtros y variables globales.
+</p>
+
+<hr>
+
+<h2>18. Advertencia de Seguridad</h2>
+
+<p>
+No se deben permitir plantillas creadas por usuarios no confiables,
+porque podrían ejecutar ataques XSS o acceder a información sensible.
+</p>
+
+<h2>19. Context Processor</h2>
+
+<p>
+Aplicación global:
+{{ app_global }}
+</p>
+
+<p>
+Usuario global:
+{{ usuario_global }}
+</p>
+
+<p>
+Estas variables están disponibles automáticamente
+en todas las plantillas del proyecto.
+</p>

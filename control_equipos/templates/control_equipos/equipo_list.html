@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Equipos</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        .container{
+            width: 90%;
+            margin: auto;
+            margin-top: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        .top-bar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .btn{
+            background: #770380;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .btn:hover{
+            background: #031369;
+        }
+
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td{
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th{
+            background: #580880;
+            color: white;
+        }
+
+        .actions a{
+            margin: 0 5px;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-size: 13px;
+        }
+
+        .ver{ background: #089db4; }
+        .editar{ background: #ffc107; color: black; }
+        .eliminar{ background: #dc3545; }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="top-bar">
+        <h1>LISTADO DE EQUIPOS</h1>
+
+        <a class="btn" href="{% url 'equipo_create' %}">
+            ➕ Agregar equipo
+        </a>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Marca</th>
+            <th>Tipo</th>
+            <th>Serial</th>
+            <th>Estado</th>
+            <th>Fecha compra</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for equipo in object_list %}
+        <tr>
+            <td>{{ equipo.marca }}</td>
+            <td>{{ equipo.tipo }}</td>
+            <td>{{ equipo.serial }}</td>
+            <td>{{ equipo.estado }}</td>
+            <td>{{ equipo.fecha_compra }}</td>
+
+            <td class="actions">
+
+                <a class="ver" href="{% url 'equipo_detail' equipo.pk %}">
+                    Ver
+                </a>
+
+                <a class="editar" href="{% url 'equipo_update' equipo.pk %}">
+                    Editar
+                </a>
+
+                <a class="eliminar" href="{% url 'equipo_delete' equipo.pk %}">
+                    Eliminar
+                </a>
+
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

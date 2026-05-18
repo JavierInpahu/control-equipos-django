@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle Equipo</title>
+
+    <style>
+        body{
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #f4f6f9, #e9eef5);
+            margin: 0;
+            padding: 0;
+        }
+
+        .card{
+            width: 420px;
+            margin: 60px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover{
+            transform: translateY(-3px);
+        }
+
+        h2{
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+
+        p{
+            font-size: 15px;
+            color: #444;
+            margin: 10px 0;
+            padding: 8px 10px;
+            background: #f8f9fb;
+            border-radius: 8px;
+        }
+
+        p b{
+            color: #222;
+        }
+
+        a{
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.2s ease;
+        }
+
+        a:hover{
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>{{ object.marca }}</h2>
+
+    <p><b>Tipo:</b> {{ object.tipo }}</p>
+    <p><b>Serial:</b> {{ object.serial }}</p>
+    <p><b>Estado:</b> {{ object.estado }}</p>
+    <p><b>Fecha compra:</b> {{ object.fecha_compra }}</p>
+
+    <a href="/equipos/">⬅ Volver</a>
+
+</div>
+
+</body>
+</html>
