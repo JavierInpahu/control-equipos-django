@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.urls import include, path
+from django.shortcuts import redirect
 
 urlpatterns = [
-    path('polls/', include('polls.urls')),
+    path('', lambda request: redirect('equipo_list')),
+
     path('admin/', admin.site.urls),
+    path('polls/', include('polls.urls')),
     path('metricas/', include('metricas.urls')),
     path('ejemplos/', include('ejemplos.urls')),
-
-    # FIX IMPORTANTE: NO duplicar prefijo
-     path("", include("control_equipos.urls")),
+    path('', include('control_equipos.urls')),
 ]
