@@ -42,4 +42,8 @@ def crud_test_dashboard(request):
 
     result["status"] = "ok"
 
-    return render(request, "control_equipos/crud_test_dashboard.html", result)
+    return render(
+        request,
+        "control_equipos/crud_test_dashboard.html",
+        result
+    )

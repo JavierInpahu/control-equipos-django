@@ -11,7 +11,7 @@ class EquipoModelTest(TestCase):
             tipo="COMPUTADOR",
             serial="HP123",
             estado="DISPONIBLE",
-            fecha_solicitud="2026-05-17"
+            fecha_compra="2026-05-17"
         )
 
     def test_creacion_equipo(self):
@@ -27,7 +27,7 @@ class EquipoViewsTest(TestCase):
             tipo="COMPUTADOR",
             serial="DL001",
             estado="DISPONIBLE",
-            fecha_solicitud="2026-05-17"
+            fecha_compra="2026-05-17"
         )
 
     def test_lista_equipos(self):

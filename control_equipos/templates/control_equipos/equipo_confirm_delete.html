@@ -2,74 +2,41 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Equipo</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+
+        body{
+            font-family:Arial,sans-serif;
+            background:#f4f6f9;
         }
 
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-            width: 420px;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        .card{
+            width:90%;
+            max-width:500px;
+            margin:80px auto;
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 4px 15px rgba(0,0,0,.1);
+            text-align:center;
         }
 
-        h2 {
-            color: #dc3545;
-            margin-bottom: 10px;
+        button{
+            background:#dc3545;
+            color:white;
+            border:none;
+            padding:12px 20px;
+            border-radius:8px;
+            cursor:pointer;
         }
 
-        .info {
-            margin: 15px 0;
-            font-size: 16px;
-            color: #333;
-            font-weight: bold;
+        a{
+            margin-left:10px;
+            text-decoration:none;
         }
 
-        form {
-            margin-top: 20px;
-        }
-
-        button {
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-        .btn-delete {
-            background: #dc3545;
-            color: white;
-        }
-
-        .btn-delete:hover {
-            background: #a71d2a;
-        }
-
-        .btn-cancel {
-            background: #6c757d;
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-left: 10px;
-            display: inline-block;
-        }
-
-        .btn-cancel:hover {
-            background: #495057;
-        }
     </style>
 </head>
 
@@ -77,24 +44,25 @@
 
 <div class="card">
 
-    <h2>⚠️ Confirmar eliminación</h2>
+    <h2>Eliminar equipo</h2>
 
-    <p>¿Seguro que deseas eliminar este equipo?</p>
-
-    <div class="info">
-        {{ object.marca }} - {{ object.serial }}
-    </div>
+    <p>
+        ¿Está seguro de eliminar
+        <b>{{ object.marca }}</b>?
+    </p>
 
     <form method="post">
+
         {% csrf_token %}
 
-        <button type="submit" class="btn-delete">
+        <button type="submit">
             Sí, eliminar
         </button>
 
-        <a href="/equipos/" class="btn-cancel">
+        <a href="{% url 'equipo_list' %}">
             Cancelar
         </a>
+
     </form>
 
 </div>
