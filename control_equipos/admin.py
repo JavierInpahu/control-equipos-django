@@ -10,6 +10,8 @@ class EquipoAdmin(admin.ModelAdmin):
         'marca',
         'serial',
         'estado',
+        'nombre_estudiante',
+        'numero_estudiante',
         'fecha_compra',
     )
 
@@ -21,6 +23,8 @@ class EquipoAdmin(admin.ModelAdmin):
     search_fields = (
         'serial',
         'marca',
+        'nombre_estudiante',
+        'numero_estudiante',
     )
 
     ordering = (
