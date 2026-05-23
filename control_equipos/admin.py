@@ -12,7 +12,7 @@ class EquipoAdmin(admin.ModelAdmin):
         'estado',
         'nombre_estudiante',
         'numero_estudiante',
-        'fecha_compra',
+        'fecha_solicitud',
     )
 
     list_filter = (

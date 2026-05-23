@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('tipo', models.CharField(max_length=50)),
                 ('serial', models.CharField(max_length=100, unique=True)),
                 ('estado', models.CharField(choices=[('DISPONIBLE', 'Disponible'), ('PRESTADO', 'Prestado'), ('MANTENIMIENTO', 'Mantenimiento')], default='DISPONIBLE', max_length=20)),
-                ('fecha_compra', models.DateField()),
+                ('fecha_solicitud', models.DateField()),
             ],
         ),
         migrations.CreateModel(

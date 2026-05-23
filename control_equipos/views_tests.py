@@ -17,7 +17,7 @@ def crud_test_dashboard(request):
             tipo="COMPUTADOR",
             serial="TEST-001",
             estado="DISPONIBLE",
-            fecha_compra="2026-01-01"
+            fecha_solicitud="2026-01-01"
         )
 
         result["create_ok"] = True

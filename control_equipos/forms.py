@@ -32,21 +32,21 @@ class EquipoForm(forms.ModelForm):
             'tipo',
             'serial',
             'estado',
-            'fecha_compra',
+            'fecha_solicitud',
             'nombre_estudiante',
             'numero_estudiante',
         ]
 
         widgets = {
-            'fecha_compra': forms.DateInput(attrs={'type': 'date'}),
+            'fecha_solicitud': forms.DateInput(attrs={'type': 'date'}),
         }
 
-    def clean_fecha_compra(self):
-        fecha = self.cleaned_data.get("fecha_compra")
+    def clean_fecha_solicitud(self):
+        fecha = self.cleaned_data.get("fecha_solicitud")
 
         if fecha and fecha > date.today():
             raise forms.ValidationError(
-                "La fecha de compra no puede ser mayor a hoy"
+                "La fecha de solicitud no puede ser mayor a hoy"
             )
 
         return fecha
