@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Equipos</title>
 
     <style>
@@ -44,6 +45,10 @@
             background: #031369;
         }
 
+        .table-responsive{
+            overflow-x: auto;
+        }
+
         table{
             width: 100%;
             border-collapse: collapse;
@@ -69,9 +74,50 @@
             font-size: 13px;
         }
 
-        .ver{ background: #089db4; }
-        .editar{ background: #ffc107; color: black; }
-        .eliminar{ background: #dc3545; }
+        .ver{
+            background: #089db4;
+        }
+
+        .editar{
+            background: #ffc107;
+            color: black;
+        }
+
+        .eliminar{
+            background: #dc3545;
+        }
+
+        @media (max-width: 768px){
+
+            .container{
+                width: 98%;
+                padding: 10px;
+            }
+
+            .top-bar{
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            h1{
+                font-size: 22px;
+            }
+
+            table{
+                min-width: 1000px;
+            }
+
+            th, td{
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            .actions a{
+                display: inline-block;
+                margin: 2px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -87,50 +133,58 @@
         </a>
     </div>
 
-    <table>
-        <thead>
-        <tr>
-            <th>Marca</th>
-            <th>Tipo</th>
-            <th>Serial</th>
-            <th>Estado</th>
-            <th>Fecha compra</th>
-            <th>Persona responsable</th>
-            <th>Número estudiante</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
+    <div class="table-responsive">
 
-        <tbody>
-        {% for equipo in object_list %}
-        <tr>
-            <td>{{ equipo.marca }}</td>
-            <td>{{ equipo.tipo }}</td>
-            <td>{{ equipo.serial }}</td>
-            <td>{{ equipo.estado }}</td>
-            <td>{{ equipo.fecha_compra }}</td>
-            <td>{{ equipo.nombre_estudiante }}</td>
-            <td>{{ equipo.numero_estudiante }}</td>
+        <table>
 
-            <td class="actions">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Serial</th>
+                    <th>Estado</th>
+                    <th>Fecha compra</th>
+                    <th>Persona responsable</th>
+                    <th>Número estudiante</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
 
-                <a class="ver" href="{% url 'equipo_detail' equipo.pk %}">
-                    Ver
-                </a>
+            <tbody>
 
-                <a class="editar" href="{% url 'equipo_update' equipo.pk %}">
-                    Editar
-                </a>
+                {% for equipo in object_list %}
+                <tr>
+                    <td>{{ equipo.marca }}</td>
+                    <td>{{ equipo.tipo }}</td>
+                    <td>{{ equipo.serial }}</td>
+                    <td>{{ equipo.estado }}</td>
+                    <td>{{ equipo.fecha_compra }}</td>
+                    <td>{{ equipo.nombre_estudiante }}</td>
+                    <td>{{ equipo.numero_estudiante }}</td>
 
-                <a class="eliminar" href="{% url 'equipo_delete' equipo.pk %}">
-                    Eliminar
-                </a>
+                    <td class="actions">
 
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                        <a class="ver" href="{% url 'equipo_detail' equipo.pk %}">
+                            Ver
+                        </a>
+
+                        <a class="editar" href="{% url 'equipo_update' equipo.pk %}">
+                            Editar
+                        </a>
+
+                        <a class="eliminar" href="{% url 'equipo_delete' equipo.pk %}">
+                            Eliminar
+                        </a>
+
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
 
 </div>
 
